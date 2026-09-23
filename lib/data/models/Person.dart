@@ -11,8 +11,8 @@ class Person {
 
   factory Person.Create({required PersonType personType, required   Map<String, dynamic> json}) {
     if (personType == PersonType.Student)
-      return new Student.FromJson(json);
+      return new Student.fromJson(json);
     else
-      return new Teacher.FromJson(json);
+      return new Teacher.fromJson(json);
   }
 }

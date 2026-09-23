@@ -1,16 +1,25 @@
-class Product{
+import 'dart:core';
+
+class Product {
   final int id;
   final String name;
-  final double price;
+  final int price;
   final String? image;
   final String? description;
 
-  Product({required this.id, required this.name, required this.price, this.image, this.description});
+  const Product({
+    required this.id,
+    required this.name,
+    required this.price,
+    this.image,
+    this.description,
+  });
+
   Product copyTo({
     int? id,
     String? name,
     String? image,
-    double? price,
+    int? price,
     String? description,
   }) => Product(
     id: id ?? this.id,
@@ -20,25 +29,19 @@ class Product{
     description: description ?? this.description,
   );
 
-  //json sang product
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-        id: json['id'] as int,
-        name: json['name'] as String,
-        image: json['image'] as String,
-        price: json['price'] as double,
-        description: json['description'] as String
-    );
-  }
-  //product sang json
-  Map<String, dynamic> toJson(){
-    return {
-      "id": id,
-      "name": name,
-      "image": image,
-      "price": price,
-      "description": description,
-    };
-  }
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json["id"],
+    name: json["name"],
+    price: json["price"],
+    image: json["image"],
+    description: json["description"],
+  );
 
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "price": price,
+    "image": image,
+    "description": description,
+  };
 }

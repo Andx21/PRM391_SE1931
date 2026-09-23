@@ -1,18 +1,23 @@
 import 'package:my_flutter_app/data/models/Person.dart';
 
-class Student extends Person{
-  double? math;
-  double? phic;
-  double? chem;
+class Student extends Person {
+  final double? math;
+  final double? physic;
+  final double? chemistry;
 
-  Student({required super.id, required super.name, this.math, this.phic, this.chem});
-  factory Student.FromJson(Map<String, dynamic> json){
-    return new Student(
-      id: json['id']??"" as String,
-      name: json['name']??"" as String,
-      math: (json['math'] as num).toDouble(),
-      phic: (json['phic'] as num).toDouble(),
-      chem: (json['chem'] as num).toDouble(),
-    );
-  }
+  Student({
+    required super.id,
+    required super.name,
+    this.math,
+    this.physic,
+    this.chemistry,
+  });
+
+  factory Student.fromJson(Map<String, dynamic> json) => Student(
+    id: json["id"] ?? "",
+    name: json["name"] ?? "",
+    math: (json["math"] as num?)?.toDouble(),
+    physic: (json["physic"] as num?)?.toDouble(),
+    chemistry: (json["chemistry"] as num?)?.toDouble(),
+  );
 }
